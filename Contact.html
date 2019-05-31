@@ -14,10 +14,9 @@
   <link rel="stylesheet" id="rcc-styles-css" href="css/style.css" type="text/css" media="all">
   <link rel="stylesheet" id="site-css-css" href="css/site.css" type="text/css" media="all">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-  <script type="text/javascript" src="js/jquery-migrate.min.js"></script>
   <script type="text/javascript" src="js/webpack.common.js"></script>
 </head>
-
+<!-- asa -->
 <body class="page-template page-template-page-templates page-template-agency page-template-page-templatesagency-php page page-id-36">
   <nav id="menu" class="mm-menu mm-menu_offcanvas mm-menu_pagedim-black" aria-hidden="true">
     <div class="mm-panels">
@@ -28,6 +27,12 @@
           <li class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-315 mm-listitem"><a href="#" class="nav-link">Features</a></li>
           <li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-36 current_page_item active nav-item nav-item-316 mm-listitem"><a href="Agencies.html" class="nav-link">Agencies</a></li>
           <li class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-317 mm-listitem"><a href="Contact.html" class="nav-link">Contact Us</a></li>
+          <li class="menu-item menu-item-type-post_type menu-item-object-page nav-item mm-listitem lang">
+                  <ul>
+                    <li><img src="img/flag.png" alt="mongoliaFlag" /></li>
+                    <li><img src="img/flag3.png" alt="USflag" /></li>
+                  </ul>
+                </li>
         </ul>
       </div>
     </div>
@@ -35,8 +40,8 @@
   <div class="page mm-page mm-slideout" id="mm-0">
     <header class="header">
       <div class="container-fluid max-container">
-        <div class="row">
-          <div class="col-xl-3 col-6">
+        <div class="row" id="row">
+          <div class="col-xl-3 col-6 topLogo">
             <a href="SproutLast.html" class="logo">
               <svg id="logo" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460.09 131.56">
                                   <g>
@@ -277,12 +282,24 @@
         </div>
       </div>
     </div>
-
+ <script>
+      window.onscroll = function() {
+        myfunction();
+      };
+      var navbar = document.getElementById("row");
+      var sticky = navbar.offsetTop;
+      function myfunction() {
+        if (window.pageYOffset >= sticky) {
+          navbar.classList.add("sticky");
+        } else {
+          navbar.classList.remove("sticky");
+        }
+      }
+    </script>
     <script type="text/javascript" src="js/scripts.js"></script>
     <script type="text/javascript" src="js/vendors.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/rellax.min.js"></script>
-    <script type="text/javascript" src="js/wp-embed.min.js"></script>
 
 
   </div>
