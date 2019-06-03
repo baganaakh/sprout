@@ -111,6 +111,9 @@
 }
 
 /* bagana sticky menu */
+.row {
+  transition: all 0.5s linear;
+}
 
 .sticky {
   position: fixed;
@@ -120,22 +123,14 @@
   background-color: #ffffff;
 }
 
-.topLogo {
+/* .topLogo {
   margin-right: -50px;
-}
-
-.text-right {
-  margin-left: -40px;
-}
-
-/* 
-.sticky header.header nav {
-  color: black;
-}
-
-.sticky .header.header nav {
-  color: #ffffff;
 } */
+/* 
+.text-right {
+  padding-left: -30px;
+} */
+
 body.page-template-home header.header .sticky .logo svg g.ehnii path {
   fill: rgb(34, 199, 181);
 }
@@ -149,5 +144,13 @@ body.page-template-home header.header .sticky .btn {
 }
 
 header.header .sticky nav ul li a {
+  color: #000;
+}
+
+.lang li img {
+  width: 90%;
+}
+
+body.page-template-home header.header .sticky .mob-menu {
   color: #000;
 }

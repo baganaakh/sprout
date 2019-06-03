@@ -15102,7 +15102,7 @@ a.text-dark:hover {
 }
 
 .max-container {
-  max-width: 1700px
+  max-width: 100%;
 }
 
 div.large-first-p .content-wrap p:first-of-type {
