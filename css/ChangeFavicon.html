@@ -82,10 +82,10 @@
         
         var text1 = document.getElementById("txt1").value;
         var text2 = document.getElementById("txt2").value;
-       // blinkTitle(blink_speed, text1, text2);
-        // }
-        // function blinkTitle(blink_speed, txt1, txt2) {
-        var t = setInterval(function(text1, text2) {
+      //  blinkTitle(blink_speed, text1, text2);
+      //   }
+      //   function blinkTitle(blink_speed, txt1, txt2) {
+        var t = setInterval(function() {
           if (document.title == text1) {
             document.title = text2;
           } else {
