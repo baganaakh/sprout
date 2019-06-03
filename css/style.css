@@ -32,7 +32,7 @@
 
 .rcc-panel p {
   float: left;
-  color: #FFFFFF;
+  color: #ffffff;
   line-height: 20px;
   font-size: 14px;
   margin-bottom: 15px;
@@ -45,7 +45,7 @@
 }
 
 .rcc-panel a {
-  color: #FFFFFF;
+  color: #ffffff;
   display: inline-block;
   font-size: 13px;
   line-height: 13px;
@@ -63,11 +63,11 @@
 }
 
 .rcc-panel a:hover {
-  color: #FFFFFF !important;
+  color: #ffffff !important;
 }
 
 .rcc-accept-btn {
-  background: #07A6D0;
+  background: #07a6d0;
 }
 
 .rcc-accept-btn:hover {
@@ -112,7 +112,6 @@
 
 /* bagana sticky menu */
 
-
 .sticky {
   position: fixed;
   top: 0;
@@ -122,12 +121,11 @@
 }
 
 .topLogo {
-  margin-left: 40px;
   margin-right: -50px;
 }
 
 .text-right {
-  margin-left: -20px;
+  margin-left: -40px;
 }
 
 /* 
@@ -138,9 +136,18 @@
 .sticky .header.header nav {
   color: #ffffff;
 } */
-body.page-template-home header.header .sticky .logo svg g path {
+body.page-template-home header.header .sticky .logo svg g.ehnii path {
   fill: rgb(34, 199, 181);
-
 }
 
-header.header nav ul li a {}
+body.page-template-home header.header .sticky .logo svg g.daraagiin path {
+  fill: rgb(0, 0, 0);
+}
+
+body.page-template-home header.header .sticky .btn {
+  color: #000;
+}
+
+header.header .sticky nav ul li a {
+  color: #000;
+}
