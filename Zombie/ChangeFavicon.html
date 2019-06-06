@@ -3,31 +3,11 @@
 
 <head>
   <title>test title</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    body {
-      margin: 0;
-      font-size: 28px;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    .header {
-      background-color: #f1f1f1;
-      padding: 30px;
-      text-align: center;
-    }
-
-    .content {
-      padding: 16px;
-    }
-  </style>
 </head>
-<!--                 Delay            -->
-<div class="content">
-  <p>Delay</p>
-  <select name="delay" id="delay">
-    <option value="0" selected>Delay</option>
-    <option value="1">1</option>
+<div>
+  <select id="delay">
+    <option value="0">Delay</option>
+    <option value="1" selected>1</option>
     <option value="2">2</option>
     <option value="3">3</option>
     <option value="4">4</option>
@@ -38,89 +18,59 @@
     <option value="9">9</option>
     <option value="10">10</option>
   </select>
+  <input type="number" id="count" placeholder="blink count">
+  <input type="number" id="steep" value="1" placeholder="count step">
   <input type="number" id="bSpeed" placeholder=" blink speed" />
   <input type="text" id="txt1" placeholder="text 1" />
-  <input type="text" id="txt2" placeholder="text 2" />
-  <input type="button" onclick="delay(delay.value,bSpeed.value,txt1.value,txt2.value)" value="Delay">
+  <input type="button" onclick="start(count.value,steep.value,bSpeed.value,txt1.value,document.title)" value="start">
   <input type="button" onclick="stop()" value="Stop">
 </div>
 <script>
   var myVar;
-  function stop() {
-    clearInterval(myVar);
-  }
-  function delay(delay, bSpeed, text1, text2) {
+  var del = document.getElementById("delay");
+  var delay = del.options[del.selectedIndex].value;
+  function start(count, steep, bSpeed, txt1, txt2) {
+    if (txt1 == "") {
+      txt1 = "  ";
+    }
+    if (count == ""){
+      count =3;
+      steep=0;
+    }
+    console.log("delay  " + delay);
+    console.log("count  " + count);
+    console.log("step  " + steep);
+    console.log("bspeed  " + bSpeed);
+    console.log("txt1  " + txt1);
+    console.log("txt2  " + txt2);
+
     setTimeout(function () {
       myVar = setInterval(function () {
-        if (document.title == text1) {
-          document.title = text2;
+        if (count > 0) {
+          if (document.title == txt1) {
+            document.title = txt2;
+            count -= steep;
+            console.log("title=2 "+ count);
+          } else {
+            document.title = txt1;
+            count -= steep;
+            console.log("title=1 "+count);
+          }
         } else {
-          document.title = dtext1;
+          console.log("count over");
+          clearInterval(myVar);
         }
       }, bSpeed);
     }, delay);
-  }
-</script>
-<!--      blink count          -->
 
-<div class="content">
-  <p>Blink original title</p>
-  <input type="number" id="blinkSpd" placeholder=" blink speed" />
-  <input type="button" onclick="blink(blinkSpd.value,document.title)" value="Start">
-  <input type="button" onclick="stop()" value="Stop">
-</div>
-<script>
-  function blink(blinkSpd, title) {
-    myVar = setInterval(function () {
-      if (document.title == title) {
-        document.title = "   ";
-      } else {
-        document.title = title;
-      }
-    }, blinkSpd);
+  }
+  function stop() {
+    clearInterval(myVar);
   }
 </script>
 
 
 
-<!--       countdown          -->
-
-<div class="content">
-  <p>countDown</p>
-  <input type="number" id="blCount" placeholder="blink count">
-  <input type="number" id="blSeed" placeholder=" blink speed" />
-  <input type="text" id="txt3" placeholder="text 3" />
-  <input type="text" id="txt4" placeholder="text 4" />
-  <input type="button" onclick="blinkCount(blCount.value, blSeed.value, txt3.value, txt4.value)" value="Start">
-  <input type="button" onclick="stop()" value="Stop">
-</div>
-<script>
-
-  function blinkCount(blcount, bSpeed, txt3, txt4) {
-    myVar = setInterval(function () {
-      console.log(blcount);
-      if (blcount > 0) {
-
-        if (document.title == txt3) {
-          document.title = txt4;
-          blcount--;
-          console.log(blcount);
-        } else {
-          document.title = txt3;
-          blcount--;
-          console.log(blcount);
-        }
-
-      } else {
-        console.log("Count over");
-        clearInterval(myVar);
-      }
-    }, bSpeed);
-
-
-  }
-
-</script>
 
 
 
