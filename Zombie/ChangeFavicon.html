@@ -5,7 +5,7 @@
   <title>test title</title>
 </head>
 <div>
-  <select id="delay">
+  <select onchange="val()" id="delay">
     <option value="0">Delay</option>
     <option value="1" selected>1</option>
     <option value="2">2</option>
@@ -19,45 +19,34 @@
     <option value="10">10</option>
   </select>
   <input type="number" id="count" placeholder="blink count">
-  <input type="number" id="steep" value="1" placeholder="count step">
+  <input type="number" id="steep" placeholder="count step">
   <input type="number" id="bSpeed" placeholder=" blink speed" />
   <input type="text" id="txt1" placeholder="text 1" />
   <input type="button" onclick="start(count.value,steep.value,bSpeed.value,txt1.value,document.title)" value="start">
   <input type="button" onclick="stop()" value="Stop">
 </div>
 <script>
-  var myVar;
-  var del = document.getElementById("delay");
-  var delay = del.options[del.selectedIndex].value;
+  var myVar,delay;
+  function val(){
+    delay=1000*document.getElementById("delay").value;
+  }
   function start(count, steep, bSpeed, txt1, txt2) {
-    if (txt1 == "") {
-      txt1 = "  ";
-    }
-    if (count == ""){
-      count =3;
+    
+      if (count == "" && steep == ""){
+      count =1;
       steep=0;
     }
-    console.log("delay  " + delay);
-    console.log("count  " + count);
-    console.log("step  " + steep);
-    console.log("bspeed  " + bSpeed);
-    console.log("txt1  " + txt1);
-    console.log("txt2  " + txt2);
-
     setTimeout(function () {
       myVar = setInterval(function () {
         if (count > 0) {
           if (document.title == txt1) {
             document.title = txt2;
             count -= steep;
-            console.log("title=2 "+ count);
           } else {
             document.title = txt1;
             count -= steep;
-            console.log("title=1 "+count);
           }
         } else {
-          console.log("count over");
           clearInterval(myVar);
         }
       }, bSpeed);
