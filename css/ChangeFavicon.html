@@ -24,42 +24,11 @@
     }
   </style>
 </head>
-
-<div class="content">
-  <!-- // Interval -->
-  <p>interval</p>
-  <input type="number" id="blink_speed" placeholder=" blink speed" />
-  <input type="text" id="txt1" placeholder="text 1" />
-  <input type="text" id="txt2" placeholder="text 2" />
-
-  <input type="button" onclick="interval()" value="Start">
-  <input type="button" style="background-color: rgb(255, 122, 122)" onclick="stop()" value="Stop">
-</div>
-<script>
-  var myVar;
-  function interval() {
-    var blink_spd = document.getElementById("blink_speed").value;
-    var text1 = document.getElementById("txt1").value;
-    var text2 = document.getElementById("txt2").value;
-    myVar = setInterval(
-      function () {
-        if (document.title == text1) {
-          document.title = text2;
-        } else {
-          document.title = text1;
-        }
-      }, blink_spd);
-    
-  }
-  function stop() {
-    
-    clearInterval(myVar);
-  }
-</script>
 <!--                 Delay            -->
 <div class="content">
   <p>Delay</p>
   <select name="delay" id="delay">
+    <option value="0" selected>Delay</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -78,14 +47,17 @@
   <input type="button" onclick="stop()" value="Stop">
 </div>
 <script>
-
+  var myVar;
+  function stop() {
+    clearInterval(myVar);
+  }
   function delay() {
     var delay = 1000 * document.getElementById("delay").value;
     var bSpeed = document.getElementById("bSpeed").value;
     var dtext1 = document.getElementById("txt3").value;
     var text2 = document.getElementById("txt4").value;
     setTimeout(function () {
-     myVar= setInterval(function () {
+      myVar = setInterval(function () {
         if (document.title == dtext1) {
           document.title = text2;
         } else {
@@ -126,7 +98,7 @@
 
 <div class="content">
   <p>countDown</p>
-  <input type="number" name="ss" id="blinkcount">
+  <input type="number" placeholder="blink count" id="blinkcount">
   <input type="number" id="blinkSpd" placeholder=" blink speed" />
   <input type="text" id="txt5" placeholder="text 5" />
   <input type="text" id="txt6" placeholder="text 6" />
@@ -139,7 +111,27 @@
     var blinkSpd = document.getElementById("blinkSpd").value;
     var text5 = document.getElementById("txt5").value;
     var text6 = document.getElementById("txt6").value;
+    
 
+      myVar = setInterval(function () {
+
+if(blcount >0){
+
+        if (document.title == dtext1) {
+          document.title = text2;
+          blcount--;
+          console.log(blcount);
+        } else {
+          document.title = dtext1;
+          blcount--;
+          console.log(blcount);
+        }
+      
+    }
+    clearInterval(myVar);
+      
+      }, bSpeed);
+    
 
   }
 
