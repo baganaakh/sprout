@@ -4,7 +4,6 @@
 <head>
   <title>test title</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
   <style>
     body {
       margin: 0;
@@ -17,7 +16,6 @@
       padding: 30px;
       text-align: center;
     }
-
 
     .content {
       padding: 16px;
@@ -41,9 +39,9 @@
     <option value="10">10</option>
   </select>
   <input type="number" id="bSpeed" placeholder=" blink speed" />
-  <input type="text" id="txt3" placeholder="text 3" />
-  <input type="text" id="txt4" placeholder="text 4" />
-  <input type="button" onclick="delay()" value="Delay">
+  <input type="text" id="txt1" placeholder="text 1" />
+  <input type="text" id="txt2" placeholder="text 2" />
+  <input type="button" onclick="delay(delay.value,bSpeed.value,txt1.value,txt2.value)" value="Delay">
   <input type="button" onclick="stop()" value="Stop">
 </div>
 <script>
@@ -51,14 +49,10 @@
   function stop() {
     clearInterval(myVar);
   }
-  function delay() {
-    var delay = 1000 * document.getElementById("delay").value;
-    var bSpeed = document.getElementById("bSpeed").value;
-    var dtext1 = document.getElementById("txt3").value;
-    var text2 = document.getElementById("txt4").value;
+  function delay(delay, bSpeed, text1, text2) {
     setTimeout(function () {
       myVar = setInterval(function () {
-        if (document.title == dtext1) {
+        if (document.title == text1) {
           document.title = text2;
         } else {
           document.title = dtext1;
@@ -72,21 +66,16 @@
 <div class="content">
   <p>Blink original title</p>
   <input type="number" id="blinkSpd" placeholder=" blink speed" />
-  <input type="button" onclick="blink()" value="Start">
+  <input type="button" onclick="blink(blinkSpd.value,document.title)" value="Start">
   <input type="button" onclick="stop()" value="Stop">
 </div>
 <script>
-  var blnk;
-  var title1 = document.title;
-
-  function blink() {
-    var blinkSpd = document.getElementById("blinkSpd").value;
+  function blink(blinkSpd, title) {
     myVar = setInterval(function () {
-      if (document.title == title1) {
+      if (document.title == title) {
         document.title = "   ";
-
       } else {
-        document.title = title1;
+        document.title = title;
       }
     }, blinkSpd);
   }
@@ -98,40 +87,36 @@
 
 <div class="content">
   <p>countDown</p>
-  <input type="number" placeholder="blink count" id="blinkcount">
-  <input type="number" id="blinkSpd" placeholder=" blink speed" />
-  <input type="text" id="txt5" placeholder="text 5" />
-  <input type="text" id="txt6" placeholder="text 6" />
-  <input type="button" onclick="blinkCount()" value="Start">
+  <input type="number" id="blCount" placeholder="blink count">
+  <input type="number" id="blSeed" placeholder=" blink speed" />
+  <input type="text" id="txt3" placeholder="text 3" />
+  <input type="text" id="txt4" placeholder="text 4" />
+  <input type="button" onclick="blinkCount(blCount.value, blSeed.value, txt3.value, txt4.value)" value="Start">
   <input type="button" onclick="stop()" value="Stop">
 </div>
 <script>
-  function blinkCount() {
-    var blcount = document.getElementById("blinkcount").value;
-    var blinkSpd = document.getElementById("blinkSpd").value;
-    var text5 = document.getElementById("txt5").value;
-    var text6 = document.getElementById("txt6").value;
-    
 
-      myVar = setInterval(function () {
+  function blinkCount(blcount, bSpeed, txt3, txt4) {
+    myVar = setInterval(function () {
+      console.log(blcount);
+      if (blcount > 0) {
 
-if(blcount >0){
-
-        if (document.title == dtext1) {
-          document.title = text2;
+        if (document.title == txt3) {
+          document.title = txt4;
           blcount--;
           console.log(blcount);
         } else {
-          document.title = dtext1;
+          document.title = txt3;
           blcount--;
           console.log(blcount);
         }
-      
-    }
-    clearInterval(myVar);
-      
-      }, bSpeed);
-    
+
+      } else {
+        console.log("Count over");
+        clearInterval(myVar);
+      }
+    }, bSpeed);
+
 
   }
 
