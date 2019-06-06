@@ -2,6 +2,7 @@
 <html>
 
 <head>
+  <title>test title</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <style>
@@ -21,7 +22,6 @@
     .content {
       padding: 16px;
     }
-
   </style>
 </head>
 
@@ -32,28 +32,28 @@
   <input type="text" id="txt1" placeholder="text 1" />
   <input type="text" id="txt2" placeholder="text 2" />
 
-  <input type="button" onclick="getValues('start')" value="Start">
-  <input type="button" style="background-color: rgb(255, 122, 122)" onclick="getValues('stop')" value="Stop">
+  <input type="button" onclick="interval()" value="Start">
+  <input type="button" style="background-color: rgb(255, 122, 122)" onclick="stop()" value="Stop">
 </div>
 <script>
-  function getValues(valuee) {
-
-    var blink_speed = document.getElementById("blink_speed").value;
+  var myVar;
+  function interval() {
+    var blink_spd = document.getElementById("blink_speed").value;
     var text1 = document.getElementById("txt1").value;
     var text2 = document.getElementById("txt2").value;
-    var myVar;
-    if (valuee = "start") {
-      var myVar = setInterval(
-        function () {
-          if (document.title == text1) {
-            document.title = text2;
-          } else {
-            document.title = text1;
-          }
-        }, blink_speed);
-    } else {
-      window.clearInterval(myVar);
-    }
+    myVar = setInterval(
+      function () {
+        if (document.title == text1) {
+          document.title = text2;
+        } else {
+          document.title = text1;
+        }
+      }, blink_spd);
+    
+  }
+  function stop() {
+    
+    clearInterval(myVar);
   }
 </script>
 <!--                 Delay            -->
@@ -78,57 +78,45 @@
   <input type="button" onclick="stop()" value="Stop">
 </div>
 <script>
+
   function delay() {
     var delay = 1000 * document.getElementById("delay").value;
     var bSpeed = document.getElementById("bSpeed").value;
-    var text1 = document.getElementById("txt3").value;
+    var dtext1 = document.getElementById("txt3").value;
     var text2 = document.getElementById("txt4").value;
     setTimeout(function () {
-      setInterval(function () {
-        if (document.title == text1) {
+     myVar= setInterval(function () {
+        if (document.title == dtext1) {
           document.title = text2;
         } else {
-          document.title = text1;
+          document.title = dtext1;
         }
       }, bSpeed);
     }, delay);
-  }
-
-  function stop() {
-    window.clearInterval(t);
   }
 </script>
 <!--      blink count          -->
 
 <div class="content">
-  <p>Blink count</p>
-  <input type="number" name="ss" id="blinkcount">
+  <p>Blink original title</p>
   <input type="number" id="blinkSpd" placeholder=" blink speed" />
-  <input type="text" id="txt5" placeholder="text 5" />
-  <input type="text" id="txt6" placeholder="text 6" />
-  <input type="button" onclick="blinkCount()" value="Start">
+  <input type="button" onclick="blink()" value="Start">
   <input type="button" onclick="stop()" value="Stop">
 </div>
 <script>
-  function blinkCount() {
-    var blcount = document.getElementById("blinkcount").value;
+  var blnk;
+  var title1 = document.title;
+
+  function blink() {
     var blinkSpd = document.getElementById("blinkSpd").value;
-    var text5 = document.getElementById("txt5").value;
-    var text6 = document.getElementById("txt6").value;
-    setInterval(function () {
-      if (document.title == text5) {
-        document.title = text6;
+    myVar = setInterval(function () {
+      if (document.title == title1) {
+        document.title = "   ";
 
       } else {
-        document.title = text5;
+        document.title = title1;
       }
     }, blinkSpd);
-
-
-  }
-
-  function stop() {
-    window.clearInterval(t);
   }
 </script>
 
@@ -151,31 +139,11 @@
     var blinkSpd = document.getElementById("blinkSpd").value;
     var text5 = document.getElementById("txt5").value;
     var text6 = document.getElementById("txt6").value;
-    setInterval(function () {
-      if (document.title == text5) {
-        document.title = text6;
-
-      } else {
-        document.title = text5;
-      }
-    }, blinkSpd);
 
 
   }
 
-  function stop() {
-    window.clearInterval(t);
-  }
 </script>
-
-
-
-
-
-
-
-
-
 
 
 
