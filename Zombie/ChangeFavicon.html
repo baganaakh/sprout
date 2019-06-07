@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>test title</title>
+  <title>&nbsp;</title>
 </head>
 <div>
   <select onchange="val()" id="delay">
@@ -25,19 +25,21 @@
   <input type="button" onclick="start(count.value,steep.value,bSpeed.value,txt1.value,document.title)" value="start">
   <input type="button" onclick="stop()" value="Stop">
 </div>
+<p>DASDASD&nbsp;SDASDAS&#160;SFGHSFGHS</p>
 <script>
-  var myVar,delay;
-  function val(){
-    delay=1000*document.getElementById("delay").value;
+  var bl, delay = 1;
+  function val() {
+    delay = 1000 * document.getElementById("delay").value;
   }
-  function start(count, steep, bSpeed, txt1, txt2) {
-    
-      if (count == "" && steep == ""){
-      count =1;
-      steep=0;
+  function start(count, steep, bSpeed = 500, txt1, txt2) {
+    if(count == ""){
+      var count=1;
+    }
+    if (txt1 == "") {
+      txt1 = "&nbsp;";
     }
     setTimeout(function () {
-      myVar = setInterval(function () {
+      bl = setInterval(function () {
         if (count > 0) {
           if (document.title == txt1) {
             document.title = txt2;
@@ -47,35 +49,38 @@
             count -= steep;
           }
         } else {
-          clearInterval(myVar);
+          clearInterval(bl);
         }
-      }, bSpeed);
+      }, bSpeed*10);
     }, delay);
 
   }
   function stop() {
-    clearInterval(myVar);
+    clearInterval(bl);
   }
 </script>
 
 
-
-
-
+<p>scroll</p>
+<input type="text" id="stxt" placeholder="scroll text" />
+<input type="number" id="sspeed" placeholder="scroll speed" />
+<input type="button" onclick="titleScroll(stxt.value,sspeed)" value="Scroll">
+<input type="button" onclick="sstop()" value="Stop">
 
 <script>
-  function titleScroll() {
+  var sc;
+  function titleScroll(stext,sspeed) {
+    text=stext;
     (function titleScroller(text) {
       document.title = text;
-      setTimeout(function () {
+     sc= setTimeout(function () {
         titleScroller(text.substr(1) + text.substr(0, 1));
-      }, 1);
-    })(" Nature dff ssfd ");
+      }, sspeed*10);
+    })(stext);
   }
-
-  function myFunction3() {
-    document.title = "Third title";
-  }
+ function sstop(){
+   clearTimeout(sc);
+ }
 </script>
 
 <script>
