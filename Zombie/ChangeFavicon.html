@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>&nbsp;</title>
+  <title id="myText">Test title</title>
 </head>
 <div>
   <select onchange="val()" id="delay">
@@ -70,6 +70,8 @@
 <script>
   var sc;
   function titleScroll(stext,sspeed) {
+    if(stext == "")
+    stext=document.title;
     text=stext;
     (function titleScroller(text) {
       document.title = text;
@@ -83,18 +85,22 @@
  }
 </script>
 
+
+
+
+
+<!--           sound       -->
+<p>sound</p>
+<audio src="sample.mp3" preload="auto"></audio>
 <script>
-  function myFunction() {
-    {
-      var link =
-        document.querySelector("link[rel*='icon']") ||
-        document.createElement("link");
-      link.type = "image/x-icon";
-      link.rel = "shortcut icon";
-      link.href = "../img/download.png";
-      document.getElementsByTagName("head")[0].appendChild(link);
-    }
-  }
+window.addEventListener('focus',playsound());
+function playsound(){
+  var audio=new Audio('sample.mp3');
+  audio.play();
+}
+</script>
+
+<script>
 
   function myFunction2() {
     var link =
