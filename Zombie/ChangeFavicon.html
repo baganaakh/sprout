@@ -22,43 +22,42 @@
   <input type="number" id="steep" placeholder="count step">
   <input type="number" id="bSpeed" placeholder=" blink speed" />
   <input type="text" id="txt1" placeholder="text 1" />
-  <input type="button" onclick="start(count.value,steep.value,bSpeed.value,txt1.value,document.title)" value="start">
-  <input type="button" onclick="stop()" value="Stop">
+  <input type="button" onclick="start(2000, 400, false, 1000, true )" value="start">
 </div>
-<p>DASDASD&nbsp;SDASDAS&#160;SFGHSFGHS</p>
 <script>
-  var bl, delay = 1;
-  function val() {
-    delay = 1000 * document.getElementById("delay").value;
-  }
-  function baganaa_blink(b_delay,blink_count, b_step, b_speed, txt1) {
-    if(blink_count == ""){
-      var blink_count=1;
+  function baganaa_blink(b_delay, b_interval, blink_bool, blink_count, CDown_bool, CDown_count, CDown_step, txt1) {
+  
+    if (blink_bool == true) {
+      txt1="&nbsp";
     }
-    if (txt1 == "") {
-      txt1 = "&nbsp;";
+    if (CDown_bool == true) {
+      CDown_count = 1;
+      CDown_step = 0;
     }
-    var txt2=document.title;
+    var txt2 = document.title;
     setTimeout(function () {
       bl = setInterval(function () {
-        if (blink_count > 0) {
+        if (blink_count > 0 && CDown_count > 0) {
           if (document.title == txt1) {
             document.title = txt2;
-            blink_count -= b_step;
+            CDown_count -= CDown_step;
+            blink_count --;
           } else {
             document.title = txt1;
-            blink_count -= b_step;
+            CDown_count -= CDown_step;
+            blink_count --;
           }
         } else {
           clearInterval(bl);
         }
-      }, b_speed*10);
+      }, b_interval * 10);
     }, b_delay);
 
   }
-  function stop() {
-    clearInterval(bl);
-  }
+
+
+
+
 </script>
 
 
@@ -70,24 +69,24 @@
 
 <script>
   var sc;
-  function titleScroll(stext,sspeed) {
-    if(stext == "")
-    stext=document.title;
-    text=stext;
+  function titleScroll(stext, sspeed) {
+    if (stext == "")
+      stext = document.title;
+    text = stext;
     (function titleScroller(text) {
       document.title = text;
-     sc= setTimeout(function () {
+      sc = setTimeout(function () {
         titleScroller(text.substr(1) + text.substr(0, 1));
-      }, sspeed*10);
+      }, sspeed * 10);
     })(stext);
   }
- function sstop(){
-   clearTimeout(sc);
- }
+  function sstop() {
+    clearTimeout(sc);
+  }
 </script>
 <script>
-var text=new ShuffleText(document.querySelector('#myTitle'));
-text.start();
+  var text = new ShuffleText(document.querySelector('#myTitle'));
+  text.start();
 
 </script>
 
@@ -98,11 +97,11 @@ text.start();
 <p>sound</p>
 <audio src="sample.mp3" preload="auto"></audio>
 <script>
-window.addEventListener('focus',playsound());
-function playsound(){
-  var audio=new Audio('sample.mp3');
-  audio.play();
-}
+  window.addEventListener('focus', playsound());
+  function playsound() {
+    var audio = new Audio('sample.mp3');
+    audio.play();
+  }
 </script>
 
 <script>
