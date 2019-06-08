@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title id="myTitle" >shuffle titles new</title>
+    <title id="myText" >shuffle titles new</title>
 </head>
 <p >shuffle text loooong looooong sting</p>
 
@@ -110,7 +110,8 @@
     }());
     return ShuffleText;
 })));
-
+var text = new ShuffleText(document.querySelector('#myText'));
+  text.start();
     </script>
 </body>
 

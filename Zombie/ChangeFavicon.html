@@ -22,15 +22,57 @@
   <input type="number" id="steep" placeholder="count step">
   <input type="number" id="bSpeed" placeholder=" blink speed" />
   <input type="text" id="txt1" placeholder="text 1" />
-  <input type="button" onclick="start(2000, 400, false, 1000, true )" value="start">
-</div>
-<script>
+  <input type="button" value="start"
+  onclick="baganaa_blink(500,     200,        true,       1000,        true,      9999,        30,)">
+  <input type="button" value="pulsat"
+  onclick="baganaa_pulsat(500,     200,        true,       1000,        true,      9999,        30,         'tttttttttttt')">
+  </div><script>txt1
   function baganaa_blink(b_delay, b_interval, blink_bool, blink_count, CDown_bool, CDown_count, CDown_step, txt1) {
-  
-    if (blink_bool == true) {
-      txt1="&nbsp";
+    var dec = 1;
+    if (blink_count == "") {
+      blink_count = 1;
+      dec = 0;
     }
-    if (CDown_bool == true) {
+    if (blink_bool == true) {
+      txt1 = " ";
+    }
+    if (CDown_bool == false) {
+      CDown_count = 1;
+      CDown_step = 0;
+    }
+    var txt2 = document.title;
+    setTimeout(function () {
+      bl = setInterval(function () {
+        if (blink_count > 0 && CDown_count > 0) {
+          if (document.title == txt2) {
+            document.title = txt1;
+            CDown_count -= CDown_step;
+            blink_count -=dec;
+          } else {
+            document.title = txt2;
+            CDown_count -= CDown_step;
+            blink_count -=dec;
+          }
+        } else {
+          clearInterval(bl);
+        }
+      }, b_interval * 10);
+    }, b_delay);
+  }
+
+
+
+
+  function baganaa_pulsat(b_delay, b_interval, blink_bool, blink_count, CDown_bool, CDown_count, CDown_step, txt1) {
+    var dec = 1;
+    if (blink_count == "") {
+      blink_count = 1;
+      dec = 0;
+    }
+    if (blink_bool == true) {
+      txt1 = " ";
+    }
+    if (CDown_bool == false) {
       CDown_count = 1;
       CDown_step = 0;
     }
@@ -41,21 +83,18 @@
           if (document.title == txt1) {
             document.title = txt2;
             CDown_count -= CDown_step;
-            blink_count --;
+            blink_count -=dec;
           } else {
             document.title = txt1;
             CDown_count -= CDown_step;
-            blink_count --;
+            blink_count -=dec;
           }
         } else {
           clearInterval(bl);
         }
       }, b_interval * 10);
     }, b_delay);
-
   }
-
-
 
 
 </script>
@@ -85,8 +124,8 @@
   }
 </script>
 <script>
-  var text = new ShuffleText(document.querySelector('#myTitle'));
-  text.start();
+  // var text = new ShuffleText(document.querySelector('#myTitle'));
+  // text.start();
 
 </script>
 
@@ -96,13 +135,13 @@
 <!--           sound       -->
 <p>sound</p>
 <audio src="sample.mp3" preload="auto"></audio>
-<script>
+<!-- <script>
   window.addEventListener('focus', playsound());
   function playsound() {
     var audio = new Audio('sample.mp3');
     audio.play();
   }
-</script>
+</script> -->
 
 <script>
 
