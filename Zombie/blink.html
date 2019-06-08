@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>blink</title>
+</head>
+
+<body>
+    <script>
+        window.onload = function () {
+            baganaa_pulsate(100, 150, false, 1000, false, 9999, 30, 'Title 2 here !!!!!!');
+        };
+
+        function baganaa_pulsate(b_delay, b_interval, blink_bool, blink_count, CDown_bool, CDown_count, CDown_step, txt1) {
+            var dec = 1;
+            if (blink_count == "") {
+                blink_count = 1;
+                dec = 0;
+            }
+            if (blink_bool == true) {
+                txt1 = ".";
+            }
+            if (CDown_bool == false) {
+                CDown_count = 1;
+                CDown_step = 0;
+            }
+            var txt2 = document.title;
+            setTimeout(function () {
+                bl = setInterval(function () {
+                    if (blink_count > 0 && CDown_count > 0) {
+                        if (document.title == txt1) {
+                            document.title = txt2;
+                            CDown_count -= CDown_step;
+                            blink_count -= dec;
+                        } else {
+                            document.title = txt1;
+                            CDown_count -= CDown_step;
+                            blink_count -= dec;
+                        }
+                    } else {
+                        clearInterval(bl);
+                    }
+                }, b_interval);
+            }, b_delay);
+        }
+    </script>
+</body>
+
+</html>

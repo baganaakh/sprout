@@ -1,0 +1,16 @@
+<script>
+    window.onload = function () {
+        titleScroll("Sample Title Here 1 2 3 4 ", 300);
+    };
+    function titleScroll(stext, speed) {
+        if (stext == "")
+            stext = document.title;
+        text = stext;
+        (function titleScroller(text) {
+            document.title = text;
+            setTimeout(function () {
+                titleScroller(text.substr(1) + text.substr(0, 1));
+            }, speed);
+        })(stext);
+    }
+</script>
