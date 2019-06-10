@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function changeFavicon(duration, img1, img2, img3, img4, img5, img6) {
+            var favicon_images = [
+                img1, img2, img3, img4, img5, img6
+            ],
+                image_counter = 0; // To keep track of the current image
+            setInterval(function () {
+                var favicon = document.querySelector('link[rel="shortcut icon"]');
+                if (!favicon) {
+                    favicon = document.createElement('link');
+                    favicon.setAttribute('rel', 'shortcut icon');
+                    var head = document.querySelector('head');
+                    head.appendChild(favicon);
+                }
+                favicon.setAttribute('type', 'image/gif');
+                favicon.setAttribute('href', favicon_images[image_counter]);
+                if (image_counter == favicon_images.length - 1)
+                    image_counter = 0;
+                else
+                    image_counter++;
+            }, duration);
+        }
+        changeFavicon(200, 'tmp-0.gif', 'tmp-1.gif', 'tmp-2.gif', 'tmp-3.gif', 'tmp-4.gif', 'tmp-5.gif');
+    </script>
+
+</body>
+
+</html>
