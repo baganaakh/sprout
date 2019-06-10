@@ -109,11 +109,16 @@
             }());
             return ShuffleText;
         })));
+        function getVal(dur,txt,Randoms,empty,length){
         var text = new ShuffleText(document.querySelector('#myText'));
-        text.duration = 4000;
-        text.setText('Shine text shuu ene');
+        text.duration = dur;
+        text.setText(txt);
+        text.sourceRandomCharacter = Randoms;
+        text.emptyCharacter = empty;
+        text._originalLength = length;
         text.start();
-        
+        }
+        getVal(4000,'parameter text !!!!!!','qwerty','0',6);
     </script>
 </body>
 
