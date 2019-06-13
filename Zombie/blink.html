@@ -11,16 +11,15 @@
 <body>
     <script>
 
-                 baganaa_blink(100, 300, true, 10, false, 99, 5);
-        function baganaa_blink(b_delay, b_interval, blink_bool, blink_count, CDown_bool, CDown_count, CDown_step) {
+                 baganaa_blink(100, 300, false, 10, false, 99, 5,'');
+        function baganaa_blink(b_delay, b_interval, blink_bool, blink_count, CDown_bool, CDown_count, CDown_step,txt1) {
             var dec = 1;
             if (blink_count == "") {
                 blink_count = 1;
                 dec = 0;
             }
-            if (blink_bool == true) {
-                txt1 = ".";
-            }
+               var txt1 = ".";
+            
             if (CDown_bool == false) {
                 CDown_count = 1;
                 CDown_step = 0;

@@ -5,10 +5,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <!-- <link rel="icon" type="image/icon" href="lip.ico" sizes="16x16"> -->
+  
+  <!-- edge  -->
+  <link rel="shortcut icon" type="image/icon" href="lip.ico" />
+  <!-- safari -->
+  <!-- <link rel="apple-touch-icon" type="image/icon"  sizes="57x57" href="lip.ico"> -->
+  
+
+
+
+
+
+
+
+
+
+
   <title>Document</title>
 </head>
 
 <body>
+  <p>favicon</p>
   <script>
     function change_favicon(img) {
       var favicon = document.querySelector('link[rel="shortcut icon"]');
@@ -18,10 +37,10 @@
         var head = document.querySelector('head');
         head.appendChild(favicon);
       }
-      favicon.setAttribute('type', 'image/png');
+      favicon.setAttribute('type', 'image/icon');
       favicon.setAttribute('href', img);
     }
-    change_favicon('../img/flag.png');
+    change_favicon('flag.png');
   </script>
 </body>
 
